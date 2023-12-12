@@ -17,7 +17,7 @@ namespace Project_LCD2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private SerialCommunicationManager serialManager;
+        private SerieleCommunicatie serialManager;
 
         public MainWindow()
         {
@@ -27,7 +27,7 @@ namespace Project_LCD2
 
         private void InitializeSerialManager()
         {
-            serialManager = new SerieleCommunicatie("COM8", 9600); // Replace with your actual COM port and baud rate
+            serialManager = new SerieleCommunicatie("COM8", 9600); 
             serialManager.DataReceived += SerialManager_DataReceived;
             serialManager.Open();
         }
@@ -36,15 +36,13 @@ namespace Project_LCD2
         {
             Dispatcher.Invoke(() =>
             {
-                // Update UI or perform actions based on received data
-                // For example, display the received data in a TextBox
-                textBoxReceivedData.Text = receivedData;
+               textBoxReceivedData.Text = receivedData;
             });
         }
-
-        private void Button_SendData_Click(object sender, RoutedEventArgs e)
+        
+        //Hello arduino sturen naar LCD
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Send data to Arduino when the button is clicked
             serialManager.SendData("Hello, Arduino!");
         }
 
@@ -56,6 +54,7 @@ namespace Project_LCD2
             base.OnClosed(e);
         }
 
+        //LCD reset
         private void delete(object sender, RoutedEventArgs e)
         {
             serialManager.SendData("reset");
