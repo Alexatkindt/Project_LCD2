@@ -8,7 +8,6 @@
         Title="MainWindow" Height="125" Width="310">
     <Grid>
 
-
         <Button Content="Send" HorizontalAlignment="Left" Margin="20,27,0,0" 
                 VerticalAlignment="Top" Height="50" Width="123" Click="Button_Click"/>
 
